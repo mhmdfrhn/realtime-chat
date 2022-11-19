@@ -2,6 +2,8 @@ import React from 'react';
 
 import { AddChannel } from '../assets';
 
+const setToggleContainer = () => {};
+
 const TeamChannelList = ({ children, error = false, loading, type }) => {
   if (error) {
     return type === 'team' ? (
@@ -28,7 +30,7 @@ const TeamChannelList = ({ children, error = false, loading, type }) => {
         <p className='team-channel-list__header__title'>
           {type === 'team' ? 'Channels' : 'Direct Messages'}
         </p>
-        {/* Button -> add channel */}
+        {/* button */}
       </div>
       {children}
     </div>
