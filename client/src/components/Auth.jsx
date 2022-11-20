@@ -27,16 +27,16 @@ export const Auth = () => {
     e.preventDefault();
 
     // get the actually the database
-    const { fullName, username, password, phoneNumber, avatarURL } = form;
+    const { username, password, phoneNumber, avatarURL } = form;
 
     // making specify the url to our request to
     const URL = 'http://localhost:5000/auth';
     const {
-      data: { token, userId, hashedPassword },
+      data: { token, userId, hashedPassword, fullName },
     } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
       username,
       password,
-      fullName,
+      fullName: form.fullName,
       phoneNumber,
       avatarURL,
     });
@@ -112,22 +112,22 @@ export const Auth = () => {
               </div>
             )}
             <div className='auth__form-container_fields-content_input'>
-              <label htmlFor='confirmPassword'>Confirm Password</label>
+              <label htmlFor='password'>Password</label>
               <input
                 type='password'
-                name='confirmPassword'
-                placeholder='Confirm Password'
+                name='password'
+                placeholder='Password'
                 onChange={handleChange}
                 required
               />
             </div>
             {isSignup && (
               <div className='auth__form-container_fields-content_input'>
-                <label htmlFor='confirmPassword'>Password</label>
+                <label htmlFor='confirmPassword'>Confirm Password</label>
                 <input
-                  type='confirmPassword'
-                  name='password'
-                  placeholder='Password'
+                  type='password'
+                  name='confirmPassword'
+                  placeholder='Confirm Password'
                   onChange={handleChange}
                   required
                 />
